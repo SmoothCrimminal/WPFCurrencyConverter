@@ -1,8 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "1HyQrtGc2k4CSSgJvQMukQK4Mks+TdYrKM6kRfm9vvrm/l+ClhabsROiMIs4k4FaPfOa6leyYJPeQYFfozNTHA==",
+  "dgSpecHash": "CrXgzwcWy4xlAuaPlrcXbq5kxapHV+JwxdqaQP3CqtFg36S0VF7rZH3aQLJzEWi1g7Pw0wai2+469lflqwP7LA==",
   "success": true,
   "projectFilePath": "C:\\Users\\lataw\\source\\repos\\Currency Converter\\Currency Converter\\Currency Converter.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "expectedPackageFiles": [
+    "C:\\Users\\lataw\\.nuget\\packages\\fontawesome.wpf\\4.7.0.9\\fontawesome.wpf.4.7.0.9.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Pakiet „FontAwesome.WPF 4.7.0.9” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8” zamiast platformy docelowej projektu „.NETCoreApp,Version=v3.1”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
+      "libraryId": "FontAwesome.WPF",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
