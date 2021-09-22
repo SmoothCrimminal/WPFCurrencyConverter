@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lataw\\source\\repos\\Currency Converter\\Currency Converter\\Currency Converter.csproj": {}
+    "C:\\Users\\lataw\\WPFCurrencyConverter\\Currency Converter\\Currency Converter.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lataw\\source\\repos\\Currency Converter\\Currency Converter\\Currency Converter.csproj": {
+    "C:\\Users\\lataw\\WPFCurrencyConverter\\Currency Converter\\Currency Converter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lataw\\source\\repos\\Currency Converter\\Currency Converter\\Currency Converter.csproj",
+        "projectUniqueName": "C:\\Users\\lataw\\WPFCurrencyConverter\\Currency Converter\\Currency Converter.csproj",
         "projectName": "Currency Converter",
-        "projectPath": "C:\\Users\\lataw\\source\\repos\\Currency Converter\\Currency Converter\\Currency Converter.csproj",
+        "projectPath": "C:\\Users\\lataw\\WPFCurrencyConverter\\Currency Converter\\Currency Converter.csproj",
         "packagesPath": "C:\\Users\\lataw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lataw\\source\\repos\\Currency Converter\\Currency Converter\\obj\\",
+        "outputPath": "C:\\Users\\lataw\\WPFCurrencyConverter\\Currency Converter\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lataw\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,10 @@
             "FontAwesome.WPF": {
               "target": "Package",
               "version": "[4.7.0.9, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             }
           },
           "imports": [
@@ -63,7 +67,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.206\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.207\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using System.Text.RegularExpressions;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace Currency_Converter
 {
@@ -22,10 +24,64 @@ namespace Currency_Converter
     /// </summary>
     public partial class MainWindow : Window
     {
+        Root val = new Root();
+        public class Root
+        {
+            public Rate rates { get; set; }
+            public long timestamp;
+            public string license;
+        }
+
+        public class Rate
+        {
+            public double INR { get; set; }
+            public double JPY { get; set; }
+            public double USD { get; set; }
+            public double NZD { get; set; }
+            public double EUR { get; set; }
+            public double CAD { get; set; }
+            public double ISK { get; set; }
+            public double PHP { get; set; }
+            public double DKK { get; set; }
+            public double CZK { get; set; }
+            public double PLN { get; set; }
+        }
+
+        private async void GetValue()
+        {
+            val = await GetData<Root>("https://openexchangerates.org/api/latest.json?app_id=a7b1c7546e6f4b37901ccd7d6adafdf1");
+            BindCurrency();
+        }
+
+        public static async Task<Root> GetData<T>(string url)
+        {
+            var myRoot = new Root();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.Timeout = TimeSpan.FromMinutes(1);
+                    HttpResponseMessage response = await client.GetAsync(url);
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var ResponceString = await response.Content.ReadAsStringAsync();
+                        var ResponceObject = JsonConvert.DeserializeObject<Root>(ResponceString);
+
+                        //MessageBox.Show("TimeStamp: " + ResponceObject.timestamp, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return ResponceObject;
+                    }
+                    return myRoot;
+                }
+            }
+            catch
+            {
+                return myRoot;
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
-            BindCurrency();
+            GetValue();
            
         }
 
@@ -36,13 +92,17 @@ namespace Currency_Converter
             dtCurrency.Columns.Add("Value");
 
             dtCurrency.Rows.Add("--SELECT--", 0);
-            dtCurrency.Rows.Add("INR", 0.05);
-            dtCurrency.Rows.Add("USD", 3.84);
-            dtCurrency.Rows.Add("EUR", 4.54);
-            dtCurrency.Rows.Add("SAR", 1.03);
-            dtCurrency.Rows.Add("POUND", 5.32);
-            dtCurrency.Rows.Add("DEM", 2.32);
-            dtCurrency.Rows.Add("PLN", 1);
+            dtCurrency.Rows.Add("INR", val.rates.INR);
+            dtCurrency.Rows.Add("USD", val.rates.USD);
+            dtCurrency.Rows.Add("NZD", val.rates.NZD);
+            dtCurrency.Rows.Add("JPY", val.rates.JPY);
+            dtCurrency.Rows.Add("EUR", val.rates.EUR);
+            dtCurrency.Rows.Add("CAD", val.rates.CAD);
+            dtCurrency.Rows.Add("ISK", val.rates.ISK);
+            dtCurrency.Rows.Add("PHP", val.rates.PHP);
+            dtCurrency.Rows.Add("DKK", val.rates.DKK);
+            dtCurrency.Rows.Add("CZK", val.rates.CZK);
+            dtCurrency.Rows.Add("PLN", val.rates.PLN);
 
             cmbFromCurrency.ItemsSource = dtCurrency.DefaultView;
             cmbFromCurrency.DisplayMemberPath = "Text";
@@ -107,7 +167,7 @@ namespace Currency_Converter
 
                 //Calculation for currency converter is From Currency value multiply(*) 
                 // with amount textbox value and then the total is divided(/) with To Currency value
-                ConvertedValue = (double.Parse(cmbFromCurrency.SelectedValue.ToString()) * double.Parse(txtCurrency.Text)) / double.Parse(cmbToCurrency.SelectedValue.ToString());
+                ConvertedValue = (double.Parse(cmbToCurrency.SelectedValue.ToString()) * double.Parse(txtCurrency.Text)) / double.Parse(cmbFromCurrency.SelectedValue.ToString());
 
                 //Show in label converted currency and converted currency name.
                 lblCurrency.Content = cmbToCurrency.Text + " " + ConvertedValue.ToString("N3");

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\lataw\source\repos\Currency Converter\Currency Converter\obj\Debug\netcoreapp3.1\
+C:\Users\lataw\WPFCurrencyConverter\Currency Converter\obj\Debug\netcoreapp3.1\
 Currency_Converter
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\lataw\source\repos\Currency Converter\Currency Converter\App.xaml
+C:\Users\lataw\WPFCurrencyConverter\Currency Converter\App.xaml
 11407045341
 
 5775165937
-1931758944160
+194710680176
 MainWindow.xaml;
 
-True
+False
 
